@@ -12,7 +12,6 @@ module.exports = {
     },
 
     create: function(params, callback){
-
         MapModel.create(params, function(err, result){
             if(err){
                 callback(err, null);
