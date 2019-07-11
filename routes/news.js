@@ -22,7 +22,7 @@ router.get('/', function(req, res, next) {
 
 router.post('/map', function(req, res, next) {
 
-    MapsController.create(req.query, function(err, results){
+    MapsController.create(req.body, function(err, results){
         if(err){
             console.log(err);
             res.json({
