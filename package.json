@@ -11,6 +11,6 @@
   },
   "scripts": {
     "start": "node app.js",
-    "heroku-postbuild": "node app.js"
+    "heroku-postbuild": "nodemon app.js"
   }
 }
