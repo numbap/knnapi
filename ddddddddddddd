@@ -1,2 +1,0 @@
-MONGO_PORT = 5000
-MONGO_DB_URL = mongodb+srv://Test:Test123!@cluster0-0gcsw.mongodb.net/test?retryWrites=true&w=majority
