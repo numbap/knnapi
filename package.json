@@ -11,7 +11,6 @@
     "nodemon": "^1.19.1"
   },
   "scripts": {
-    "start": "node app.js",
-    "heroku-postbuild": "node app.js"
+    "start": "node app.js"
   }
 }
