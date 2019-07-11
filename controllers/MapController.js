@@ -2,7 +2,7 @@ const MapModel = require('../models/MapModel')
 
 module.exports = {
     find: function(params, callback){
-        MapModel.find(params,'_id description name', function(err, results){
+        MapModel.find(params,'_id description name locations', function(err, results){
             if(err){
                 callback(err, null);
                 return;
