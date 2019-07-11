@@ -4,7 +4,7 @@ const MapSchema = new mongoose.Schema({
     id: String,
     name: String,
     description: String,
-    maps: [{
+    locations: [{
         id: String,
         location: String, 
         lat: String,
