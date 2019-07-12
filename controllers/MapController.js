@@ -1,4 +1,5 @@
 const MapModel = require('../models/MapModel')
+const ObjectId = require('mongodb').ObjectID;
 
 module.exports = {
     find: function(params, callback){
@@ -11,13 +12,19 @@ module.exports = {
         })
     },
 
-    create: function(params, callback){
-        MapModel.create(params, function(err, result){
-            if(err){
-                callback(err, null);
-                return
-            }
-            callback(null, result);
+    create: function({_id, name, description}, callback){
+        console.log({_id, name, description}, 'rrrrrrr')
+        _id = _id || new ObjectId() 
+        MapModel.findByIdAndUpdate(_id,
+            { name: name, description: description },
+            {upsert: true, 'new': true},
+            function(err, res) {
+                if(err){
+                    callback(err, null);
+                    return
+                }
+                console.log(res)
+                callback(null, res);
         });
     },
 
@@ -31,3 +38,16 @@ module.exports = {
         })
     }
 }
+
+
+
+// MapModel.findByIdAndUpdate('5d25312dd0e13c1655f5ff6e',
+// 
+// 
+// function(err, res) {
+//     if(err){
+//         callback(err, null);
+//         return
+//     }
+//     callback(null, result);
+// });
