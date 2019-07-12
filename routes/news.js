@@ -58,18 +58,14 @@ router.delete('/map', function(req, res, next) {
     });
 });
 
-
-
 router.get('/:id', function(req, res, next){
-    const id = req.params.id
-
-    const picked = fakeNews.find(o => o.id === id);
-
-    res.status(200).send({
-        data: picked
+    MapsController.findById(req.params.id , 
+    function(err, results){
+            res.status(200).send({
+                data: results
+            })
     })
-
 })
 
-
 module.exports = router
+
