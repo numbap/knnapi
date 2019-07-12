@@ -28,6 +28,18 @@ module.exports = {
         });
     },
 
+
+    delete: function({_id}, callback){
+        MapModel.findByIdAndRemove(_id,
+            function(err, res) {
+                if(err){
+                    callback(err, null);
+                    return
+                }
+                callback(null, res);
+        });
+    },
+
     findById: function(id, callback){
         MapModel.findById(id, function(err, results){
             if(err){
@@ -38,16 +50,3 @@ module.exports = {
         })
     }
 }
-
-
-
-// MapModel.findByIdAndUpdate('5d25312dd0e13c1655f5ff6e',
-// 
-// 
-// function(err, res) {
-//     if(err){
-//         callback(err, null);
-//         return
-//     }
-//     callback(null, result);
-// });
