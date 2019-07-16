@@ -28,7 +28,7 @@ module.exports = {
     },
 
 
-    delete: function({_id, name, description}, callback){
+    delete: function(_id, callback){
         _id = _id || new ObjectId() 
         MapModel.findByIdAndDelete(_id,
             function(err, res) {

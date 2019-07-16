@@ -38,9 +38,9 @@ router.post('/map', function(req, res, next) {
     });
 });
 
-router.delete('/map', function(req, res, next) {
+router.delete('/:id', function(req, res, next) {
 
-    MapsController.delete(req.query, function(err, results){
+    MapsController.delete(req.params.id, function(err, results){
         if(err){
             console.log(err);
             res.json({
