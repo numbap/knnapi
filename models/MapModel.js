@@ -12,6 +12,7 @@ const MapSchema = new mongoose.Schema({
     }]      
 });
 
+
 mongoose.model('MapModel', MapSchema);
 
 module.exports = mongoose.model('MapModel');
