@@ -28,6 +28,20 @@ module.exports = {
     },
 
 
+    delete: function({_id, name, description}, callback){
+        _id = _id || new ObjectId() 
+        MapModel.findByIdAndDelete(_id,
+            function(err, res) {
+                if(err){
+                    callback(err, null);
+                    return
+                }
+                console.log(res)
+                callback(null, res);
+        });
+    },
+
+
     createLocation: async function(map_id, newObj, callback){
         newObj._id = newObj._id || new ObjectId()
         map_id = map_id || new ObjectId()  
