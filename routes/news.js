@@ -1,8 +1,10 @@
+// Load dependencies
 const express = require('express')
 const router = express.Router()
 const MapsController = require('./../controllers/MapController')
 var ObjectId = require('mongodb').ObjectID
 
+// List all maps
 router.get('/', function(req, res, next) {
 
     MapsController.find(req.query, function(err, results){
@@ -21,7 +23,8 @@ router.get('/', function(req, res, next) {
     });
 });
 
-router.post('/map', function(req, res, next) {
+// Create a map
+router.post('/', function(req, res, next) {
     MapsController.create(req.query, function(err, results){
         if(err){
             console.log(err);
@@ -38,8 +41,8 @@ router.post('/map', function(req, res, next) {
     });
 });
 
+// Delete a map
 router.delete('/:id', function(req, res, next) {
-
     MapsController.delete(req.params.id, function(err, results){
         if(err){
             console.log(err);
@@ -56,7 +59,7 @@ router.delete('/:id', function(req, res, next) {
     });
 });
 
-// Add a location to a specific ID
+// Add a location to a specific map
 router.post('/:id', function(req, res, next) {
     MapsController.createLocation(req.params.id,
         req.query, 
@@ -78,7 +81,7 @@ router.post('/:id', function(req, res, next) {
 });
 
 
-// // Not tested yet. To delete id. 
+// Delete a pecific location from a specific map 
 router.delete('/:id/:locationId', function(req, res, next) {
     MapsController.deleteLocation(req.params.id, req.params.locationId, 
         function(err, response){
@@ -98,7 +101,7 @@ router.delete('/:id/:locationId', function(req, res, next) {
 });
 
 
-
+// Not used. May remove later
 router.get('/:id', function(req, res, next){
     MapsController.findById(req.params.id, 
         function(err, results){
@@ -108,33 +111,4 @@ router.get('/:id', function(req, res, next){
     })
 })
 
-
-
 module.exports = router
-
-
-
-// user = api.mongodb.userModel;
-// ObjectId = require('mongoose').Types.ObjectId;
-// return user
-//     .findOne({email : params.username})
-//     .select('inventories')
-//     .find({'title': 'activeInventory'})
-//     //also tried
-//     //.where('title')
-//     //.equals('activeInventory')
-//     .exec(function(err, result){
-//         console.log(err);
-//         console.log(result);
-//     });
-
-
-
-// router.get('/:id', function(req, res, next){
-//     MapsController.find({"locations._id": ObjectId(req.params.id)}, 
-//         function(err, results){
-//         res.status(200).send({
-//             data: results
-//         }) 
-//     })
-// })

@@ -1,7 +1,9 @@
+// Load dependencies
 const MapModel = require('../models/MapModel')
 const ObjectId = require('mongodb').ObjectID;
 
 module.exports = {
+    // Find all maps
     find: function(params, callback){
         MapModel.find(params,'_id description name locations', function(err, results){
             if(err){
@@ -12,6 +14,7 @@ module.exports = {
         })
     },
 
+    // Create a new map
     create: function({_id, name, description}, callback){
         _id = _id || new ObjectId() 
         MapModel.findByIdAndUpdate(_id,
@@ -27,7 +30,7 @@ module.exports = {
         });
     },
 
-
+    // Delete a map
     delete: function(_id, callback){
         _id = _id || new ObjectId() 
         MapModel.findByIdAndDelete(_id,
@@ -41,7 +44,7 @@ module.exports = {
         });
     },
 
-
+    // Create a location
     createLocation: async function(map_id, newObj, callback){
         newObj._id = newObj._id || new ObjectId()
         map_id = map_id || new ObjectId()  
@@ -74,7 +77,7 @@ module.exports = {
         );
     },
 
-    // Not tested yet
+    // Delete a location
     deleteLocation: async function(userId, locationId, callback){
 
         MapModel
@@ -91,6 +94,7 @@ module.exports = {
         })
     },
 
+    // Not used yet. May remove later
     findById: function(id, callback){
         MapModel.findById(id, function(err, results){
             if(err){

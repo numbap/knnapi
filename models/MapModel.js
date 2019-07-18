@@ -1,5 +1,7 @@
+// Load dependencies
 const mongoose = require('mongoose');  
 
+// Schema for main map model
 const MapSchema = new mongoose.Schema({  
     id: String,
     name: String,
